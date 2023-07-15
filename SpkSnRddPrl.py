@@ -7,5 +7,7 @@ sc=spark.sparkContext
 
 rdd=sc.parallelize(["hellow","ola","fella","oorah","rock","roll"])
 
-#rdd.foreach(lambda x:print(x))
-print(rdd.count())
+#print(len(rdd.collect()))
+
+rdd.foreach(lambda x:print(x))
+#print(rdd.count())
