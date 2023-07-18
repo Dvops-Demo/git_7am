@@ -32,3 +32,6 @@ print("=====kv_rdd_res====\n")
 print(kv_rdd_res)
 print("=====reduce_by_res====\n")
 print(reduce_by_res)
+
+grpby=kvrdd.groupByKey().mapValues(len).collect()
+print(grpby)
