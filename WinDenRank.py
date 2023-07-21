@@ -2,6 +2,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.window import Window
 from pyspark.sql.functions import row_number
 from pyspark.sql.functions import rank
+from pyspark.sql.functions import dense_rank
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
@@ -19,7 +20,7 @@ df = spark.createDataFrame(data=simpleData, schema=columns)
 Windospec=Window.partitionBy("department").orderBy("salary")
 
 
-ndf=df.withColumn("RANK",rank().over(Windospec))
+ndf=df.withColumn("RANK",dense_rank().over(Windospec))
 ndf.show()
 # fdf=ndf.filter(ndf.rno==1)
 # rdf=fdf.drop("rno")
