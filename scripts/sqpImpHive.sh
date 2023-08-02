@@ -1,4 +1,5 @@
 #export jdbc="jdbc:mysql://localhost:3306/hiveimport" this was configured in edge node
+# sh sqpImpHive.sh hivecars carsimp  this sample command to trigger this shell scrit from edge node
 export conn=$jdbc
 
 rdbTbl=$1
