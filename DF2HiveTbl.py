@@ -14,3 +14,4 @@ dfhyd=ssn.sql("select * from db.emp where loc='hyd'")
 dfhyd.write.mode("overwrite/append").saveAsTable("db.hydemp")
 
 
+
