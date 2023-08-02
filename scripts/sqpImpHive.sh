@@ -2,6 +2,7 @@
 export conn=$jdbc
 
 rdbTbl=$1
+hivetbl=$2
 
 echo "mysql table name is "${rdbTbl}""
 
@@ -12,5 +13,5 @@ sqoop import --connect \
 --table "${rdbTbl}" \
 --fields-terminated-by '|' \
 --lines-terminated-by '\n' \
---hive-import --hive-overwrite --hive-table newcars \
+--hive-import --hive-overwrite --hive-table "${hivetbl}" \
 --m 1
