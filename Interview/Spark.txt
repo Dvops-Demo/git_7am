@@ -1,0 +1,28 @@
+>Spark is a distributed processing framework.
+>Spark uses Random access memory(RAM).
+>Spark context is an entry point to the spark program.
+>Spark features are:
+ a.Easy b.Scalable c.General purpose d.Fast
+>Cluster manager types are:
+ 1.Hadoop yarn
+ 2.stand alone
+ 3.Apache moses
+>We have 2 data structures in spark:
+ 1.RDD(Resilient Distributed datasets) 2.DataFrames
+RDD:
+>It does not have any schema.
+>It is an immutable distributed collection of objects.
+>Each dataset in RDD is divided into logical partitions, which may be computed on different nodes of the cluster.
+>RDDs provide basic and low level API .
+>It supports OOP
+Data frames:
+>DataFrames are the distributed dataset and along with the data it contains schema.
+How to create dataframe?
+>There are 2 ways to create dataframes:1.using file 2.using hive query
+ *Using file>DataFrame is created by reading csv file,parquet file,avro file.
+syntax: df=spark.read.options(header="true",inferSchema="true").csv(<<hdfs path>>)
+synatx: df=spark.read.table("<<table name>>")
+        or df=spark.sql(<<hive query>>)
+df.write.SaveAsTable("<<db.tablname>>")
+df.write.mode('append').parquet("file path")
+df.write.mode('overwrite').parquet("<<filepath>>")
