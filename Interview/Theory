@@ -1,0 +1,10 @@
+1.Hadoop(Hdfs,Mapreduce)
+2.Hive(Internal table,External table,Partitioning, Bucketing,Windowing functions,Data loading,
+  Table-to-table loading,CTAS,Joins,Date function)
+3.Sqoop(Data Ingesion,Import,Export,Sqoop commands)
+4.Spark(Rdd(How to create Rdds?),Dataframes(How to create dataframes?),Spark import,spark export,spark processing,
+spark submit commands,spark architecture,spark submit jobs)
+5.Shell script(How to create shell scripts?,How to provide command line arguments?,\
+How to deploy shell scripts into production enviroinment?)
+6.Python(Classes,objects,variables,String formatting,collections).utube
+7.S3,ec2,emr -check in

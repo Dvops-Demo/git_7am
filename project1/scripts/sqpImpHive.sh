@@ -1,0 +1,18 @@
+#export jdbc="jdbc:mysql://localhost:3306/hiveimport" this was configured in edge node
+# sh sqpImpHive.sh hivecars carsimp  this sample command to trigger this shell scrit from edge node
+export conn=$jdbc
+
+rdbTbl=$1
+hivetbl=$2
+
+echo "mysql table name is "${rdbTbl}""
+
+
+sqoop import --connect \
+"${conn}" \
+--username root --password root \
+--table "${rdbTbl}" \
+--fields-terminated-by '|' \
+--lines-terminated-by '\n' \
+--hive-import --hive-overwrite --hive-table "${hivetbl}" \
+--m 1
