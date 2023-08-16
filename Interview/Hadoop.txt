@@ -1,0 +1,10 @@
+1.Hadoop is a distributed parallel processing system.
+2.Hadoop is a solution to big data.
+3.Hadoop can process structured,unstructered and semi structured data.
+4.There are 4 "Vs" in hadoop they are:
+  1.Volume- How much data 2.Velocity-How frequent  3.Variety- what kind of data
+  4.Veracity-How accurate & appllicable is the data
+5.SPOF-single point of failure
+6.Fault tolerant-the ability of a system to recover from failures and errors without losing data or functionality.
+7.High availability
+8.Hadoop ecosystem(Name node,data node,Node manager,Resource manager,secondary name node,stand by name node)

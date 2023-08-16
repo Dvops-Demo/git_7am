@@ -1,0 +1,1 @@
+select e.id,e.name,e.age,d.dname from mydb.emp e join mydb.dept d on e.id=d.eid

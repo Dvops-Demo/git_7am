@@ -1,0 +1,17 @@
+>Sqoop is one of the component of Hadoop,it is neither meant for processing nor for storage.
+>Sqoop is exclusively meant for data ingesion.
+>Sqoop is a tool used to transfer the data from RDBMS to Hadoop server.
+>Thus it helps in transfer of bulk data.
+
+>Sqoop import command:
+  Sqoop import --connect jdbc:mysql://localhost:3306/abc  \
+  --username root --password root --table emp --hive-import --hive-overwrite --hive-table hiveimptbl -m 1
+
+>Sqoop Export command:
+  sqoop export --connect jdbc:mysql://localhost:3306/abc  \
+  --username root --password root --table emp --export dir /user/hive/warehouse/hive_database_name.db/table \
+  -- driver com.mysql.jdbc.Driver
+  --input-fields-terminated-by ',' -m 1
+
+>How to optimize the sqoop jobs:
+ A. Using number of Mappers.
