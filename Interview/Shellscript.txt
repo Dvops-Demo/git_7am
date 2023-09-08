@@ -1,0 +1,2 @@
+>The group of unix/Linux commmands is called shell script.
+>The main concept of shell script is to save lot of work time with the help of job scheduling.
