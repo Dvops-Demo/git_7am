@@ -19,7 +19,12 @@ pym=pmn + yr
 
 
 
-current_data=dmgrp_df.join(lab_df,dmgrp_df.pid==lab_df.pid,"inner").select(dmgrp_df.pid,dmgrp_df.pname,dmgrp_df.age,dmgrp_df.gender,lab_df.diag,lab_df.score)
+current_data=dmgrp_df.join(lab_df,dmgrp_df.pid==lab_df.pid,"inner").select(dmgrp_df.pid,dmgrp_df.pname,dmgrp_df.age,dmgrp_df.gender,lab_df.diag,lab_df.score) \
+    .withColumn("status",when(lab_df.score > 120,"High").otherwise("Low")) \
+    .withColumn("progress",lit("High")) \
+    .withColumn("myr",lit("0823"))
+
+current_data.write.saveAsTable("mydb.rpt_dbc_metric")
 
 prev_month_df=ssn.sql("select * from rpt_dbc_metric where yrm={}".format(pym))
 
@@ -28,19 +33,6 @@ cur_prev_df=current_data.join(prev_month_df,current_data.pid==prev_month_df.pid,
     .withColumn("progress",when(current_data.score > prev_month_df.score,"Red").otherwise("Green")) \
     .withColumn("yrm",lit(myr))
 
-
-# jdf=dmgrp_df.join(lab_df,dmgrp_df.pid==lab_df.pid,"inner").select(dmgrp_df.pid,dmgrp_df.pname,dmgrp_df.age,dmgrp_df.gender,lab_df.diag,lab_df.score)\
-#     .withColumn("status",when(lab_df.score>120,"High").otherwise("Low"))\
-#     .withColumn("progress",when(lab_df.score > prev_month_df.score,"Red").otherwise("Green")) \
-#     .withColumn("yrm",lit(myr))
-
 ldf=cur_prev_df.write.mode("append").saveAsTable("mydb.rpt_dbc_metric")
-
-
-
-
-
-
-#,when(new_df("ename").isNull(),old_df("ename")).otherwise(new_df("ename")),when(new_df("sal").isNull(),old_df("sal")).otherwise(new_df("sal")),when(new_df("sal").isNull(),old_df("sal")).otherwise(new_df("sal")))
 
 
