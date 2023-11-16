@@ -11,6 +11,10 @@ ssn=SparkSession.builder.master("local[*]")\
     .getOrCreate()
 
 dfhyd=ssn.sql("select * from db.emp where loc='hyd'")
+
+
+
+dfhyd.fillna("UNK")
 dfhyd.write.mode("overwrite/append").saveAsTable("db.hydemp")
 
 
