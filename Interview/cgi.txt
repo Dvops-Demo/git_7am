@@ -197,3 +197,27 @@ C1,C2,C3,C4,C5
 |NULL|NULL|
 |NULL|NULL|
 +----+----+
+
+>>> mul_df1=spark.read.options(header="true",inferSchema="true").csv("fm1.csv")
+>>> mul_df2=spark.read.options(header="true",inferSchema="true").csv("fm2.csv")
+>>> mul_df3=spark.read.options(header="true",inferSchema="true").csv("fm3.csv")
+>>> mul_df1.union(mul_df2)
+DataFrame[a: int, b: int, c: int]
+>>> df12=mul_df1.union(mul_df2)
+>>> df12.show()
++---+---+---+
+|  a|  b|  c|
++---+---+---+
+|  1|  1|  1|
+|  2|  2|  2|
++---+---+---+
+
+>>> df123=df12.union(mul_df3)
+>>> df123.show()
++---+---+---+
+|  a|  b|  c|
++---+---+---+
+|  1|  1|  1|
+|  2|  2|  2|
+|  3|  3|  3|
++---+---+---+
