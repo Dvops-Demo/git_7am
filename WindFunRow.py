@@ -12,13 +12,14 @@ simpleData = (("James", "Sales", 3000), ("Michael", "Sales", 4600), ("Robert", "
               ("Saif", "Sales", 4100),\
               ("Saif", "Sales", 4100))
 
-columns = ["employee_name", "department", "salary"]
+columns = ["employee_name", "dg69414epartment", "salary"]
 df = spark.createDataFrame(data=simpleData, schema=columns)
 
 Windospec=Window.partitionBy("salary").orderBy("salary")
 
 
 ndf=df.withColumn("rno",row_number().over(Windospec))
+ndf.fillna("UNK")
 ndf.show()
 fdf=ndf.filter(ndf.rno==1)
 rdf=fdf.drop("rno")

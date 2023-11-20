@@ -4,7 +4,7 @@ from operator import add
 ssn=SparkSession.builder.master("local[*]").appName("Word COUNT").getOrCreate()
 spc=ssn.sparkContext
 
-rd=spc.textFile("prac.txt")
+rd=spc.textFile("prac.txt",use_unicode=False)
 flt_mp=rd.flatMap(lambda y:y.split(" "))
 mp_rd=flt_mp.map(lambda y:(y,1))
 redby=mp_rd.reduceByKey(add)

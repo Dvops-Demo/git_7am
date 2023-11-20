@@ -20,9 +20,6 @@ pym=pmn + yr
 
 
 current_data=dmgrp_df.join(lab_df,dmgrp_df.pid==lab_df.pid,"inner").select(dmgrp_df.pid,dmgrp_df.pname,dmgrp_df.age,dmgrp_df.gender,lab_df.diag,lab_df.score) \
-    .withColumn("status",when(lab_df.score > 120,"High").otherwise("Low")) \
-    .withColumn("progress",lit("High")) \
-    .withColumn("myr",lit("0823"))
 
 current_data.write.saveAsTable("mydb.rpt_dbc_metric")
 
