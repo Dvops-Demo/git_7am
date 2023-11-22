@@ -61,4 +61,5 @@ EmpId,Name,Location1,Loccation2,Location3
 2,Risabh,Mum,Null,Pune
 
 dfn=spark.read.options(header="true",inferSchema="true").csv("cpg3.csv")
+#capG interview
 
