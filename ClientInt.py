@@ -14,8 +14,8 @@ class ClientInt:
     def jsontos3(self,df):
         df.write.json("s3://freelight/trash/jsonfilepath")
 
-        #just a commit
-
+        #just a commit from pycharm
+#another commit
 if __name__ == '__main__':
     ob=ClientInt()
     ob.readparq()
