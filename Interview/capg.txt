@@ -1,0 +1,65 @@
+Emp_no,Emp_Name,Department
+1,Gaurav,RSystem
+2,Priya,Impetus
+Invalid Entry, Description : Bad Record
+3,Aman,Microsoft
+Connection Lost ,Description : Poor Connection
+4,Mohit,Google
+
+
+
+>>> df=spark.read.options(header="true",inferSchema="true").csv("cap.csv")
+>>> df.show()
++----------------+--------------------+----------+
+|          Emp_no|            Emp_Name|Department|
++----------------+--------------------+----------+
+|               1|              Gaurav|   RSystem|
+|               2|               Priya|   Impetus|
+|   Invalid Entry| Description : Ba...|      null|
+|               3|                Aman| Microsoft|
+|Connection Lost |Description : Poo...|      null|
+|               4|               Mohit|    Google|
++----------------+--------------------+----------+
+
+>>> df.registerTempTable("capg")
+>>> spark.sql("select * from capg where Department is not null").show()
++------+--------+----------+
+|Emp_no|Emp_Name|Department|
++------+--------+----------+
+|     1|  Gaurav|   RSystem|
+|     2|   Priya|   Impetus|
+|     3|    Aman| Microsoft|
+|     4|   Mohit|    Google|
++------+--------+----------+
+
+Name~|Age
+Gaurav,Singh~|32
+Priya,Singh~|32
+Garima,Singh~|34
+Chinta,Singh~|56
+JP,Singh~|58
+
+df1=spark.read.options(header="true",inferSchema="true",sep="|").csv("capg2.csv")
+
+df2=df1.select("Name~", regexp_replace("Name~", "[~]", "").alias('Name'),"Age")
+
+fdf=df2["Name","Age"]
+
+>>> fdf.show()
++------------+---+
+|        Name|Age|
++------------+---+
+|Gaurav,Singh| 32|
+| Priya,Singh| 32|
+|Garima,Singh| 34|
+|Chinta,Singh| 56|
+|    JP,Singh| 58|
++------------+---+
+
+EmpId,Name,Location1,Loccation2,Location3
+1,Gaurav,Pune,Bang,Hyd
+2,Risabh,Mum,Null,Pune
+
+dfn=spark.read.options(header="true",inferSchema="true").csv("cpg3.csv")
+#capG interview
+
