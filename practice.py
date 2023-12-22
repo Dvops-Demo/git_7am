@@ -11,3 +11,4 @@ mrd=frdd.map(lambda y:(y,1))
 print(mrd.collect())
 redu=mrd.reduceByKey(add)
 print(redu.collect())
+#comment

@@ -16,6 +16,7 @@ dfhyd=ssn.sql("select * from db.emp where loc='hyd'")
 
 dfhyd.fillna("UNK")
 dfhyd.write.mode("overwrite/append").saveAsTable("db.hydemp")
+dfhyd.drop
 
 
 
