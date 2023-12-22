@@ -17,4 +17,4 @@ for i in range(itr):
 
     fibnace()
 
-print(lst)
+print("list",lst)
